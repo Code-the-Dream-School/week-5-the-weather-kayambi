@@ -6,7 +6,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Megrim&display=swap" rel="stylesheet">
-    <link href= "index.css" rel="stylesheet"></link>
+    <link href= "style.css" rel="stylesheet"></link>
   </head>
   <body class='cloudy,rainy,sunny, clear'>
 
@@ -16,14 +16,19 @@
         <p class="lead">This is a simple weather app. Enter the name of the city and will get all the information about the city's weather</p>
         <hr class="my-4">
         <div class="input-group mb-3 container">
+
           <input type="text" class="form-control" placeholder="city name" name="city" id="city">
+          <!--  I want geocoordinates to be displayed here -->
           <div class="input-group-append">
               <button class="btn btn-outline-info" type="button" id="search">Search</button>
           </div>
         </div>
       </div>
     <!-- Result will go here use javascript --> 
-      <div id="info"> </div>
+      <div id="info" class="geoinfo">
+        <h2> I want 7 days to be displayed here</h2>
+      </div>
+
       <!-- my javascript will go here --> 
 
       <div id="weather">
@@ -31,8 +36,6 @@
           <h1 id="temp"></h1>
           <div id="location"></div>
       </div>
-
-
     </div>
     <script type="text/javascript" src="weather.js"></script>
   </body>

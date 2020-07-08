@@ -48,7 +48,95 @@
   //   } 
     // Adding Event listiner, getting data into EventListiner using object. 
     
-    // searchBtn.addEventListener('click',
+    // searchBtn.addEventListener('click',  
+
+
+
+
+
+
+// //  creating fetch function 
+
+// feth(`https://api.openweathermap.org/data/2.5/weather?q=San Francisco&appid=7432c602e487c2cf5ba43b3f4ea7e8d6`) 
+//      .then(res => res.json()) 
+//      .the(data => console.log(data))
+
+
+
+// //  Creating a reusable function  
+
+// function fetchData(url){
+//     return fetch(url)
+//            .then(checkStatus)
+//            .then(res => res.json())
+//            .catch(error => console.log ('looks like the dog eaat your site', error))
+// }
+
+//     // Fetch All weather for 7 days and  it's geographic coordinate
+//   Promise.all([
+//   fetchData(`https://api.openweathermap.org/data/2.5/weather?q=San Francisco&appid=7432c602e487c2cf5ba43b3f4ea7e8d6`),
+//   fetchData(`https://api.openweathermap.org/data/2.5/onecall?lat=37.77&lon=-122.42&exclude=minutely,hourly&appid=7432c602e487c2cf5ba43b3f4ea7e8d6`)
+
+//   ])
+//   .then(data => {
+
+//     const weatherCoords = data[0].message;
+//     const sevenDaysCall = data[1].message;
+
+//     generateGeoCoords(weatherCoords);
+//     generateSevenDaysData(sevenDaysCall);
+   
+//   })
+
+//   //  Helper Functions 
+//   //  checking the status 
+
+//   function checkStatus (response){
+//     if (response.ok) {
+//       return Promise.resolve (response);
+
+//     } else {
+//     return Promise.reject(new Error(response.statustext));
+//   }
+//   }
+
+
+//     //  function to generate data for geographical coordinate
+
+//     function generateGeoCoords (data) { 
+
+//       const geocords = `<input src='${data}' >
+//       <p>I want my in put to be here of 
+      
+//       `;
+
+
+
+//     }
+
+//   //  function generatedata for seven days  to the html
+  
+//   function generateSevenDaysData (data) {
+
+//   }
+
+
+//   //  Event Listners  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   
