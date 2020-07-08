@@ -1,35 +1,62 @@
 // my intitialization
 const searchBtn = document.getElementById('search')
-const   city = document.getElementById('city')
-const info = document.getElementById('info')
+const   mycity = document.getElementById('city')
+const tableInfo = document.getElementById('info')
 
+const sevenDayHost = "https://api.openweathermap.org/data/2.5/onecall?exclude=minutely,hourly&";
+const weatherHost = "https://api.openweathermap.org/data/2.5/weather?q=";
+const authLock = "appid=7432c602e487c2cf5ba43b3f4ea7e8d6";
 
-//  Creating a reusable function  
+var city = "Oakland"; //input.value;
+var lat, lon, forecastData;
 
-function fetchData(url){
-    return fetch(url)
-           .then(checkStatus)
-           .then(response => response.json())
-           .catch(error => console.log ('looks like the dog eaat your site', error))
+// Build weather data url for api call to get lat and lon
+function weatherURL() {
+  return `${weatherHost}${city}&${authLock}`;
 }
 
-    // Fetch weather
-  fetch.all([
-  fetchData(`https://api.openweathermap.org/data/2.5/weather?q=San Francisco&appid=7432c602e487c2cf5ba43b3f4ea7e8d6`),
-  fetchData(`https://api.openweathermap.org/data/2.5/onecall?lat=37.77&lon=-122.42&exclude=minutely,hourly&appid=7432c602e487c2cf5ba43b3f4ea7e8d6`)
+// Build forecast data url for api call to get seven forecast info
+function forecastURL() {
+  return `${sevenDayHost}&lat=${lat}&lon=${lon}&${authLock}`;
+}
 
-  ])
-  .then(data => {
+// Global fetch function that creates a promise to return data.
+async function getData(dataURL) {
+  let response = await fetch(dataURL);
+  return response.json();
+}
 
-    const x = data[0].message;
-    const y = data[1].message;
+// Returns seven day forecast data
+function getForecastData(url) {
+  return getData(url).then(data => {
+    // Then set the forecastData variable to the data received
+    forecastData = data;
+  });
+}
 
-    generateSevenDaysData(x);
-    generateGeoCoords(y);
-   
-  
+// Returns weather data for lat and lon
+function getAllData(url) {
+  // first get lat and lon from weather api
+  getData(url)
+    .then(data => {
+      // Once data is received, update global vars {lat and lon}
+      lat = data.coord.lat;
+      lon = data.coord.lon;
+    })
+    .then(() => {
+      // Once the lat and lon have been update, Call/Invoke the function to get the seven day forecast data
+      getForecastData(forecastURL());
+    })
+    .then(() => {
+      document.getElementById("city").innerHTML = forecastData;
+    });
 
-  })
+}
+
+(getAllData(weatherURL()));  
+
+//  I need  to  map my data into html but I am still working on it. 
+
 
 
 
