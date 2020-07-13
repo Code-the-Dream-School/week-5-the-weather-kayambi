@@ -1,64 +1,57 @@
-const api = {
-    key:"7432c602e487c2cf5ba43b3f4ea7e8d6", 
-    base:"https://api.openweathermap.org/data/2.5/",
-    // baseforCast ="https://api.openweathermap.org/data/2.5/onecall?exclude=minutely,hourly&"
 
-  }
-// test the eventListiner
+const button  = document.querySelector(".button")
+const  inputValue  = document.querySelector(".inputValue")
+const  name  = document.querySelector(".name");
+const  country = document.querySelector(".country");
+let desc  = document.querySelector(".desc");  
+let temp = document.querySelector(".temp");
+let date = document.querySelector(".date");
+let day = document.querySelector(".thDay");
 
-const searchbox =document.querySelector(".search").
-searchbox.addEventListener('input', myFunction);
+// let weather = document.querySelector(".")
 
-function myFunction(e) {
-    getResult(searchbox.value);
-}
+// FETCH FUNCTION
+// Get Weather Data
 
-//   BUiling weather forcast
 
-  function getResult(query) {
-    fetch(`${api.base}weather?q=${query}&units=metrics&appid=${api.key}`)
-          .then(weather => {
-            return weather.json();
-  
-          }).then (displayResults);
-  
-  }
-//    the function to display result to UI 
-  
-  function displayResults(weather){
-  
-    // console.log(weather);
-    let city = document.querySelector('.location .city');
-    city.innerHTML = `${weather.name} ${weather.sys.country}`;
-    let now = new Date();
-    let date = document.querySelector('.location .date');
-    date.innerText =dateBuilder(now); 
+  button.addEventListener('click', function(){
+        
+
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputValue.value}&appid=74c2eda2bb799d7a7aa09ac35d429d03`)
+       .then(res =>{
+         if(res.status === 200){
+           return res.json()
+         }else{
+           alert("city was not found")
+           throw 'error';
+
+         }
+       }).then(data => {
+
+        name.innerHTML = `<p>City : ${data.name} </p>`;
+        country.innerHTML = `<p>Country : ${data.sys.country}</p>`
+        desc.innerHTML = `<p> Weather Desccription: ${data['weather'][0]['description']}<p>`;
+        temp.innerHTML=`<p> Current Temperature: ${data['main']['temp']}<span>•c</span></p>`;
+      
+      });
+   
+      
+
+      // fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={minutely,hourly}&appid=7432c602e487c2cf5ba43b3f4ea7e8d6`)
+      //      .then(response => response.json())
+      //      .then(data => 
+
+      //       console.log(data)) 
+                  
+
+          })
+
+
+
+
+
+
     
-    let temp = document.querySelector('.current .temp') 
-    temp.innerHTML = `${Math.round(weather.main.temp)}<span>•c</span>`;
-    let weather_el = document.querySelector('.current .weather');
-    weather_el.innerText = weather.weather[0].main;
-  
-
-  }
-//   set the date bulder function
-
-  function dateBuilder(d) { 
-
-    let months =["January","February","March","April","May",
-    "June","July","August","September","October","November","December"];
-
-    let days= ["sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-
-    let day = days[d.getDay()];
-    let date = d.getDate();
-    let month =months [d.getMonth()]
-    let year = d.getFullYear();
-
-    return `${day} ${date} ${month} ${year}`;
-
-  }
-
-// This will be  the process of getting Data
-
+   
+   
 
