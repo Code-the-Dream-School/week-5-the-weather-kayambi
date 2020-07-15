@@ -13,30 +13,48 @@
     <div class="container">
       <div class="jumbotron bg-dark text-white">
         <h1 class="display-4">City Weather</h1>
-        <p class="lead">This is a simple weather app. Enter the name of the city and will get all the information about the city's weather</p>
+        <p class="lead">This is a simple weather app. Enter the name of the city and will get all 
+          the information about the city's weather</p>
         <hr class="my-4">
-        <div class="input-group mb-3 container">
+        <!-- <div class="input-group mb-3 container">
+          <input type="text" autocomplete="off" class="search" placeholder="search for a city..."> 
+        </div> -->
 
-          <input type="text" class="form-control" placeholder="city name" name="city" id="city">
-          <!--  I want geocoordinates to be displayed here -->
-          <div class="input-group-append">
-              <button class="btn btn-outline-info" type="button" id="search">Search</button>
-          </div>
-        </div>
+        <!-- Input type --> 
+        <div class ="input">
+          <input type="text" autocomplete="off" class="inputValue" placeholder="search a city"> 
+          <input type="submit" value="Submit" class="button">
+     
       </div>
+      </div>
+      <div>
+        <p class="name"></p>
+        <p class="country"></p>
+        <p class="desc"></p>
+        <p class="temp"></p>
+        <!-- <p class="date"></p> -->
+      </div>
+
+    
     <!-- Result will go here use javascript --> 
-      <div id="info" class="geoinfo">
-        <h2> I want 7 days to be displayed here</h2>
+ 
+       <hr>
+      <div class="container">
+          <div class="app-title">
+              <p> Weather</p>
+          </div>
       </div>
-
-      <!-- my javascript will go here --> 
-
-      <div id="weather">
-          <div id="description"></div>
-          <h1 id="temp"></h1>
-          <div id="location"></div>
-      </div>
-    </div>
-    <script type="text/javascript" src="weather.js"></script>
+      <hr>
+      <!-- Seven Days Table -->
+      <table class="table table-dark  infoWeather">
+      
+        </table>
+      </div> 
+        
+    <script type="text/javascript" src="test.js"></script>
+    <!-- <script type="text/javascript" src="test2.js"></script> -->
+    <!-- <script type="text/javascript" src="weather.js"></script> -->
   </body>
 </html>
+
+

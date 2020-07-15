@@ -1,13 +1,9 @@
-// my intitialization
-const searchBtn = document.getElementById('search')
-const   mycity = document.getElementById('city')
-const tableInfo = document.getElementById('info')
 
 const sevenDayHost = "https://api.openweathermap.org/data/2.5/onecall?exclude=minutely,hourly&";
 const weatherHost = "https://api.openweathermap.org/data/2.5/weather?q=";
 const authLock = "appid=7432c602e487c2cf5ba43b3f4ea7e8d6";
 
-var city = "Oakland"; //input.value;
+var city = "name"; //input.value;
 var lat, lon, forecastData;
 
 // Build weather data url for api call to get lat and lon
@@ -31,6 +27,7 @@ function getForecastData(url) {
   return getData(url).then(data => {
     // Then set the forecastData variable to the data received
     forecastData = data;
+    console.log(data)
   });
 }
 
@@ -43,30 +40,43 @@ function getAllData(url) {
       lat = data.coord.lat;
       lon = data.coord.lon;
     })
-    .then(() => {
-      // Once the lat and lon have been update, Call/Invoke the function to get the seven day forecast data
-      getForecastData(forecastURL());
-    })
-    .then(() => {
-      document.getElementById("city").innerHTML = forecastData;
+    .then((displaycoords) => {
+      function displaycoords(weather){
+
+
+    const searchbox = document.querySelector(".search");
+      searchbox.addEventListener('keypress',setQuery);
+      function setQuery(event) {
+  //     // if (event.keyCode == 13) {
+      // getForecastData(searchbox.value);
+      console.log(searchbox.value);
+    }
+
+      
+        return console.log(weather)
+      }
     });
+  }
+  console.log("I am here")
 
-}
+//       // Once the lat and lon have been update, Call/Invoke the function to get the seven day forecast data
+//       getForecastData(forecastURL());
+//       console.log()
 
-(getAllData(weatherURL()));  
+//     }).then((displayResults)=>{
 
-//  I need  to  map my data into html but I am still working on it. 
+//       function displayResults(weather){
+//         return console.log(weather)
+//       }
 
-
-
-
-
-
-
-
-
-
-
+//     })
+//     .then(() => { 
 
 
+//   }
 
+//     });
+
+// }
+
+// (getAllData(weatherURL()));
