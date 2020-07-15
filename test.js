@@ -37,11 +37,10 @@ let day = document.querySelector(".thDay");
    
       
 
-      // fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={minutely,hourly}&appid=7432c602e487c2cf5ba43b3f4ea7e8d6`)
-      //      .then(response => response.json())
-      //      .then(data => 
-
-      //       console.log(data)) 
+      fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={minutely,hourly}&appid=7432c602e487c2cf5ba43b3f4ea7e8d6`)
+           .then(response => response.json())
+           .then(data => 
+             console.log(data)) 
                   
 
           })
