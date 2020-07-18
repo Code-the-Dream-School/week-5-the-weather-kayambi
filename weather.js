@@ -16,7 +16,7 @@ function forecastURL() {
   return `${sevenDayHost}&lat=${lat}&lon=${lon}&${authLock}`;
 }
 
-// Global fetch function that creates a promise to return data.
+// // Global fetch function that creates a promise to return data.
 async function getData(dataURL) {
   let response = await fetch(dataURL);
   return response.json();
@@ -24,14 +24,23 @@ async function getData(dataURL) {
 
 // Returns seven day forecast data
 function getForecastData(url) {
-  return getData(url).then(data => {
+  return getData(url).then(data =>
+
+    // console.log(data))
+  // }
+    
+    {
     // Then set the forecastData variable to the data received
     forecastData = data;
-    console.log(data)
+ 
   });
 }
 
-// Returns weather data for lat and lon
+
+
+
+
+// // Returns weather data for lat and lon
 function getAllData(url) {
   // first get lat and lon from weather api
   getData(url)
@@ -43,21 +52,38 @@ function getAllData(url) {
     .then((displaycoords) => {
       function displaycoords(weather){
 
+        return console.log(weather)
+        
 
     const searchbox = document.querySelector(".search");
+
       searchbox.addEventListener('keypress',setQuery);
       function setQuery(event) {
-  //     // if (event.keyCode == 13) {
-      // getForecastData(searchbox.value);
+      if (event.keyCode == 13) {
+      getForecastData(searchbox.value);
       console.log(searchbox.value);
     }
 
-      
-        return console.log(weather)
+
+
       }
-    });
-  }
-  console.log("I am here")
+    }
+  })
+}
+
+
+
+// {
+
+
+
+
+      
+        // return console.log(weather)
+//       }
+//     });
+//   }
+//   console.log("I am here")
 
 //       // Once the lat and lon have been update, Call/Invoke the function to get the seven day forecast data
 //       getForecastData(forecastURL());
@@ -80,3 +106,4 @@ function getAllData(url) {
 // }
 
 // (getAllData(weatherURL()));
+
